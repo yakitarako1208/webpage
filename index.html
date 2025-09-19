@@ -4,15 +4,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>シンプルな緑のホームページ</title>
-  <meta name="description" content="緑と白のシンプルなホームページテンプレート" />
+  <meta name="description" content="シンプルで美しいデザインのホームページ" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      line-height: 1.5;
-      color: #222;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      color: #333;
       background: #fff;
     }
 
@@ -28,6 +28,7 @@
       padding: 1rem;
       position: sticky;
       top: 0;
+      z-index: 1000;
     }
 
     .container {
@@ -41,42 +42,50 @@
       margin: 0;
       padding: 0;
       display: flex;
-      gap: 1rem;
+      gap: 1.5rem;
+      justify-content: center;
     }
 
     nav a {
       color: #fff;
       text-decoration: none;
       font-weight: bold;
+      transition: color 0.3s;
     }
 
     nav a:hover {
-      text-decoration: underline;
+      color: var(--green-light);
     }
 
     .hero {
-      padding: 3rem 1rem;
+      padding: 5rem 1rem;
       text-align: center;
+      background: #f5f5f5;
+      margin-bottom: 2rem;
     }
 
     .hero h1 {
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
       color: var(--green);
+      font-size: 2.5rem;
     }
 
     .hero p {
       color: var(--text-muted);
+      font-size: 1.2rem;
     }
 
     section {
-      padding: 2rem 1rem;
+      padding: 3rem 1rem;
+      text-align: center;
     }
 
     .card {
       border: 1px solid #ddd;
       padding: 1rem;
       border-radius: 8px;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
     footer {
@@ -95,18 +104,40 @@
     main.fade-out {
       opacity: 0;
     }
+
+    input, textarea, button {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+    }
+
+    button {
+      background: var(--green);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: var(--green-light);
+    }
+
+    a {
+      color: var(--green);
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
-      <div style="font-weight:bold; font-size:1.2rem;">●</div>
+      <div style="font-weight:bold; font-size:1.5rem;">●</div>
       <nav>
         <ul>
           <li><a href="#home" data-link>ホーム</a></li>
-          <li><a href="#gallery" data-link>ギャラリー</a></li>
           <li><a href="#contact" data-link>お問い合わせ</a></li>
-          <li><a href="#sns" data-link>SNS</a></li>
         </ul>
       </nav>
     </div>
@@ -115,41 +146,23 @@
   <main id="content">
     <section id="home" class="hero">
       <h1>こんにちは</h1>
-      <p>yakitarakoのサイトへようこそ</p>
-    </section>
-
-    <section id="gallery">
-      <div class="container">
-        <h2>ギャラリー</h2>
-        <p>ここに画像やコンテンツを配置できます。</p>
-      </div>
+      <p>yakitarakoのシンプルなサイトへようこそ</p>
     </section>
 
     <section id="contact">
-      <div class="container">
-        <h2>お問い合わせ</h2>
-        <form>
-          <input type="text" placeholder="お名前" style="width:100%;padding:.5rem;margin-bottom:.5rem;">
-          <input type="email" placeholder="メールアドレス" style="width:100%;padding:.5rem;margin-bottom:.5rem;">
-          <textarea placeholder="メッセージ" rows="5" style="width:100%;padding:.5rem;"></textarea>
-          <button type="submit" style="margin-top:.5rem;padding:.5rem 1rem;background:var(--green);color:white;border:none;border-radius:4px;">送信</button>
-        </form>
-      </div>
+      <h2>お問い合わせ</h2>
+      <p>お気軽にご連絡ください。</p>
+      <form>
+        <input type="text" placeholder="お名前" required>
+        <input type="email" placeholder="メールアドレス" required>
+        <textarea placeholder="メッセージ" rows="4" required></textarea>
+        <button type="submit">送信</button>
+      </form>
     </section>
-    
-    <section id="sns">
-      <div class="container">
-        <h2>連絡先</h2>
-        <p>メールアドレス: <a href="mailto:b1023182@fun.ac.jp">b1023182@fun.ac.jp</a></p>
-        <p>SNS: <a href="https://x.com/tyr_qb?s=21" target="_blank">Twitter</a>, <a href="https://www.instagram.com/kotoha_jd?igsh=MXRoOXZtbjBkcWp0Ng%3D%3D&utm_source=qr" target="_blank">Instagram</a></p>
-        </section>
-      </div>
-    </section>
-    
   </main>
 
   <footer>
-    <div class="container">© <span id="year">2025</span> マイサイト. All rights reserved.</div>
+    <div class="container">© <span id="year">2025</span> yakitarako. All rights reserved.</div>
   </footer>
 
   <script>
@@ -157,6 +170,7 @@
 
     const links = document.querySelectorAll('[data-link]');
     const content = document.getElementById('content');
+    
 
     links.forEach(link => {
       link.addEventListener('click', e => {
@@ -171,6 +185,7 @@
       });
     });
 
+    // 初期状態で「ホーム」を表示
     document.querySelectorAll('main section').forEach(sec => sec.style.display = 'none');
     document.getElementById('home').style.display = 'block';
   </script>
